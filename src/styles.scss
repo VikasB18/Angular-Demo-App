@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+.navbar {
+  box-shadow: none !important;
+  padding-top: 1rem !important;
+}
+
+.navbar .navbar-toggler {
+  background: RGB (175, 173, 169);
+}
+
+.navbar.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://ww…p='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar.navbar-dark .navbar-nav .nav-item.active > .nav-link {
+  background-color: transparent !important;
+  border-top: 4px solid RGB (175, 173, 169);
+}
+
+.navbar.navbar-dark .navbar-nav .nav-item > .nav-link:hover {
+  border-top: 1px solid RGB (175, 173, 169) !important;
+}
+
+.top-nav-collapse {
+  background: RGB (175, 173, 169);
+}
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  font-family: 'Montserrat', sans-serif; 
+}

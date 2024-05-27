@@ -1,0 +1,81 @@
+.footer-section {
+  background-color: #212f3d;
+  color: #fff;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+}
+
+::placeholder {
+  font-style: italic;
+  color: white;
+}
+
+input {
+  padding: 1.3rem 1.5rem;
+  border-right: none !important;
+}
+
+span {
+  border-left: none !important;
+}
+
+input,
+span {
+  background-color: transparent;
+  color: white;
+  border: 1.5px solid #5dade2;
+}
+
+input:focus,
+input:active {
+  background-color: transparent;
+  outline: none !important;
+}
+
+.footer-bottom {
+  background-color: #e5e7e9;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.footer-bottom i {
+  color: #5dade2 !important;
+  font-size: 1.4rem;
+}
+
+.footer-bottom p {
+  color: gray;
+  margin-top: 1rem;
+}
+
+.footer-bottom a {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.3rem;
+  margin-right: 0.2rem;
+}
+
+a.tweet {
+  text-shadow: 0.3px 0.3px #1f618d;
+  background-color: #d6eaf8;
+  border-color: #aed6f1;
+}
+
+a.facebook {
+  color: #2853b0 !important;
+  background-color: #e9ebee;
+  border-color: #aed6f1;
+}
+
+a.tweet-count {
+  color: #2853b0;
+  font-weight: bold;
+  font-size: 0.3rem;
+  margin-right: 1rem !important;
+  background-color: white;
+  padding: 0.3rem 0.3rem;
+}
+
+a.fb-count {
+  background-color: white;
+  padding: 0.3rem 0.3rem;
+}

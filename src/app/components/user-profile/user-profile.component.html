@@ -1,0 +1,357 @@
+<div class="container profile-section">
+
+  <div class="row" *ngIf="profileData != null">
+
+    <div class="col-12">
+
+      <h3 class="h3-responsive">Profile</h3>
+
+    </div>
+
+    <div class="col-4 text-center">
+
+      <img src="{{ profileData.profilePhoto }}" class="img-fluid" />
+
+      <a
+        class="btn btn-warning text-gray py-3 px-lg-4 mr-md-2 mr-lg-3 mt-5 edit-btn"
+        (click)="editPhoto(profileData.id); basicModal1.show()">Edit Photo</a>
+
+      <a
+        class="btn btn-warning text-gray py-3 px-lg-4 mt-3 mt-md-5 edit-btn"
+        (click)="editProfile(profileData.id); basicModal.show()">Edit Profile</a>
+
+    </div>
+
+    <div class="col-8">
+
+      <p>
+        I'm {{ profileData.firstName }} {{ profileData.lastName }} and my age is
+        {{ profileData.age }} years and you can send me emails to
+        <span class="text-primary">{{ profileData.email }}</span>
+        .I live in the state of {{ profileData.state }}. I like to play
+        <span> {{tagdata}}</span>.
+
+        <span *ngIf="profileData.newsLetter"
+          >And please send me newsletter. </span
+        >
+        Please reach out to me on my phone number
+      </p>
+      <a class="btn btn-success text-white py-2 px-5 agree-btn">I Agree</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Profile Modal -->
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 text-white" id="myModalLabel">
+                    Edit Profile
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm" (submit)="submiteditForm(editForm.value)">
+                    <div class="container form-content">
+                        <div class="row">
+                            <div class="col-1">
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-7 mb-0 form-group">
+                                        <input type="hidden" formControlName="id">
+                                        <input type="text" class="form-control" placeholder="First Name"
+                                            formControlName="firstName" [class.is-invalid]="
+                        editForm.get('firstName').invalid &&
+                        editForm.get('firstName').touched
+                      " />
+                                        <div *ngIf="
+                        editForm.get('firstName').invalid &&
+                        editForm.get('firstName').touched
+                      ">
+                                            <small class="text-danger"
+                                                *ngIf="editForm.get('firstName').errors?.required">First Name
+                                                Required</small>
+                                            <small class="text-danger"
+                                                *ngIf="editForm.get('firstName').errors?.pattern">Enter Valid Name
+                                                and maximum 20 characters</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 mb-0 form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name"
+                                            formControlName="lastName" [class.is-invalid]="
+                        editForm.get('lastName').invalid &&
+                        editForm.get('lastName').touched
+                      " />
+                                        <div *ngIf="
+                        editForm.get('lastName').invalid &&
+                        editForm.get('lastName').touched
+                      ">
+                                            <small class="text-danger"
+                                                *ngIf="editForm.get('lastName').errors?.required">Last Name
+                                                Required</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" formControlName="email"
+                                        [class.is-invalid]="
+                      editForm.get('email').invalid &&
+                      editForm.get('email').touched
+                    " />
+                                    <div *ngIf="
+                      editForm.get('email').invalid &&
+                      editForm.get('email').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('email').errors?.required">Email Required</small>
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('email').errors?.pattern">Please Enter Valid
+                                            Email</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="(541) 754-3010"
+                                        formControlName="contactNo" [class.is-invalid]="
+                      editForm.get('contactNo').invalid &&
+                      editForm.get('contactNo').touched
+                    " />
+                                    <div *ngIf="
+                      editForm.get('contactNo').invalid &&
+                      editForm.get('contactNo').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('contactNo').errors?.required">Contact Number
+                                            Required</small>
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('contactNo').errors?.pattern">Please Enter Valid
+                                            Contact No.</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3 age">Age : {{ age }}</div>
+                                        <div class="col-12 col-lg-9">
+                                            <input type="range" min="20" max="60" value="20" class="slider" id="myRange"
+                                                (input)="rangedata($event.srcElement.value)"
+                                                (change)="rangedata($event.srcElement.value)" formControlName="age"
+                                                [class.is-invalid]="
+                          editForm.get('age').invalid &&
+                          editForm.get('age').touched
+                        " />
+                                            <div class="col-12 p-0">
+                                                <span>20</span> <span class="float-right">60</span>
+                                            </div>
+                                            <div *ngIf="
+                          editForm.get('age').invalid &&
+                          editForm.get('age').touched
+                        ">
+                                                <small class="text-danger"
+                                                    *ngIf="editForm.get('age').errors?.required">Please Select
+                                                    Age</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select formControlName="state" [class.is-invalid]="
+                      editForm.get('state').invalid &&
+                      editForm.get('state').touched
+                    ">
+                                        <option selected hidden value="">State</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Kerela">Kerela</option>
+                                        <option value="Andaman & Nicobar">Andaman & Nicobar</option>
+                                        <option value="Lakshwadeep">Lakshwadeep</option>
+                                    </select>
+                                    <div *ngIf="
+                      editForm.get('state').invalid &&
+                      editForm.get('state').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('state').errors?.required">Please Select a
+                                            State</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select formControlName="country" [class.is-invalid]="
+                      editForm.get('country').invalid &&
+                      editForm.get('country').touched
+                    ">
+                                        <option selected hidden value="">Country</option>
+                                        <option value="India">India</option>
+                                        <option value="Russia">Russia</option>
+                                        <option value="Africa">Africa</option>
+                                        <option value="China">China</option>
+                                        <option value="Madagascar">Madagascar</option>
+                                        <option value="Sweden">Sweden</option>
+                                        <option value="Norway">Norway</option>
+                                        <option value="Italy">Italy</option>
+                                    </select>
+                                    <div *ngIf="
+                      editForm.get('country').invalid &&
+                      editForm.get('country').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('country').errors?.required">Please Select a
+                                            Country</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select formControlName="address" [class.is-invalid]="
+                      editForm.get('address').invalid &&
+                      editForm.get('address').touched
+                    " (change)="
+                      displayAddress(editForm.controls.address.value)
+                    ">
+                                        <option selected hidden value="">Address</option>
+                                        <option value="1">Home</option>
+                                        <option value="2">Company</option>
+                                    </select>
+                                    <div *ngIf="
+                      editForm.get('address').invalid &&
+                      editForm.get('address').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('address').errors?.required">Please Select
+                                            Address</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea *ngIf="!homeHide" class="form-control" placeholder="Home Address 1"
+                                        formControlName="address1" [class.is-invalid]="
+                      editForm.get('address1').invalid &&
+                      editForm.get('address1').touched
+                    "></textarea>
+                                    <div *ngIf="
+                      editForm.get('address1').invalid &&
+                      editForm.get('address1').touched
+                    ">
+                                        <small class="text-danger"
+                                            *ngIf="editForm.get('address1').errors?.required">Home Address
+                                            Required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea *ngIf="!homeHide" class="form-control" placeholder="Home Address 2"
+                                        formControlName="address2" [class.is-invalid]="
+                      editForm.get('address2').invalid &&
+                      editForm.get('address2').touched
+                    "></textarea>
+                                    <div *ngIf="
+                                                        editForm.get('address2').invalid &&
+                                                        editForm.get('address2').touched
+                                                        ">
+                                        <small class="text-danger" *ngIf="editForm.get('address2').errors?.required">Home Address
+                                            Required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea *ngIf="!companyHide" class="form-control" placeholder="Company Address 1"
+                                        formControlName="companyAddress1" [class.is-invalid]="
+                      editForm.get('companyAddress1').invalid &&
+                      editForm.get('companyAddress1').touched
+                    "></textarea>
+                                    <div *ngIf="
+                      editForm.get('companyAddress1').invalid &&
+                      editForm.get('companyAddress1').touched
+                    ">
+                                        <small class="text-danger" *ngIf="
+                        editForm.get('companyAddress1').errors?.required
+                      ">Company Address Required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea *ngIf="!companyHide" class="form-control" placeholder="Company Address 2"
+                                        formControlName="companyAddress2" [class.is-invalid]="
+                      editForm.get('companyAddress2').invalid &&
+                      editForm.get('companyAddress2').touched
+                    "></textarea>
+                                    <div *ngIf="
+                                                          editForm.get('companyAddress2').invalid &&
+                                                          editForm.get('companyAddress2').touched
+                                                        ">
+                                        <small class="text-danger" *ngIf="
+                                                            editForm.get('companyAddress2').errors?.required
+                                                          ">Company Address Required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group"><mat-form-field class="example-chip-list">
+                                    <mat-chip-list #chipList aria-label="Fruit selection">
+                                        <mat-chip *ngFor="let tags of myTag" [selectable]="selectable" [removable]="removable" (removed)="remove(tags)">
+                                            {{ tags.name }}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                        </mat-chip>
+                                        <input placeholder="Tags" class="tags" [matChipInputFor]="chipList"
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                                            (matChipInputTokenEnd)="add($event)" formControlName="tags" />
+                                    </mat-chip-list>
+                                </mat-form-field>
+                                </div>
+                                <div class="form-group">
+                                    <mdb-checkbox [default]="true" formControlName="newsLetter">Subscribe to Newsletter
+                                    </mdb-checkbox>
+                                </div>
+                                <div class="form-group text-right button-content">
+                                    <input class="btn cancel" type="reset" value="Cancel"
+                                        (click)="basicModal.hide(); closeModal()" />
+                                    <input class="btn bg-primary" type="submit" [disabled]="editForm.invalid"
+                                        value="Submit" />
+                                </div>
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Photo Modal -->
+
+<div mdbModal #basicModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal1.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 text-white" id="myModalLabel">Edit Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editPhotoForm" (submit)="submiteditPhoto(editPhotoForm.value)">
+                    <div class="container form-content">
+                        <div class="row">
+                            <div class="col-12 text-center form-group">
+                                <input type="hidden" formControlName="id">
+                                <label>
+                                    <img class="img-fluid mb-3" src="{{ profPic }}" *ngIf="profPic != null" />
+                                    <input type="file" formControlName="profilePhoto" (change)="imagePreview($event)"
+                                        accept="image/*" /><br>Upload New Profile Picture</label>
+                                    <div *ngIf="!imageValid">
+                                        <small class="text-danger">Please Upload an Image with resolution of 310 x 325 px</small>
+                                    </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group text-center button-content">
+                                    <input class="btn cancel" type="reset" value="Cancel" (click)="basicModal1.hide(); closeModal()" />
+                                    <input class="btn bg-primary" type="submit" [disabled]="editPhotoForm.invalid || !imageValid" value="Submit" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

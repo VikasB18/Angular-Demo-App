@@ -1,0 +1,159 @@
+.profile-section {
+  min-height: 100vh;
+  padding-top: 20vh;
+  padding-bottom: 5vh;
+}
+
+.profile-section h3 {
+  color: #5dade2;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.profile-section p {
+  font-size: 1.3rem;
+  color: black;
+}
+
+.profile-section .agree-btn {
+  border-radius: 0;
+}
+
+.profile-section .edit-btn {
+  border-bottom: 4px solid #dc7633;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.form-content label {
+  color: #5dade2;
+  font-weight: bold;
+}
+
+form ::placeholder {
+  font-style: normal;
+}
+
+input {
+  margin-top: 1rem;
+  padding: 1.5rem 1.5rem;
+}
+
+select {
+  margin-bottom: 0.4rem;
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #99a3a4;
+}
+
+.age {
+  color: #99a3a4;
+  font-weight: bold;
+}
+
+.button-content input {
+  padding: 0.5rem 2rem;
+  margin-left: 1rem;
+  color: white;
+}
+
+.cancel {
+  border: 0.5px solid gray !important;
+  color: black !important;
+}
+
+.middle-section {
+  background-color: #e5e7e9;
+  border-top: 2px solid #d7dbdd;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.middle-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.middle-section h1 {
+  font-size: 2.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.middle-section span {
+  background-color: #5dade2;
+  width: 7rem;
+  height: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.middle-section p {
+  color: black;
+  font-weight: 400;
+  margin-top: 1.2rem;
+  margin-bottom: 3.5rem;
+}
+
+.middle-section .find-btn {
+  background-color: transparent !important;
+  outline: none;
+  border: 0;
+  color: #5dade2;
+  font-size: 0.9rem;
+
+  font-weight: bold;
+  border: 2px solid #5dade2;
+  border-radius: 5px;
+  padding: 0.7rem 2rem;
+}
+
+input[type="range"] {
+  padding: 0;
+}
+
+.slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 3px;
+  background: #d3d3d3;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.is-invalid {
+  border: 1px solid red;
+}
+
+.example-chip-list {
+  width: 100%;
+}
+
+.tags {
+  padding: 0.5rem 0.5rem;
+}
